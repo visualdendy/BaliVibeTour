@@ -38,17 +38,19 @@ export default async function AdminDashboard() {
     const bookingsToday = bookings.filter(b => b.created_at.startsWith(today)).length
 
     // --- Chart Data Preparation (Last 7 Days) ---
-    const chartData = []
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-    // Initialize last 7 days map
-    const last7Days = new Map<string, number>()
+    type ChartData = {
+        name: string
+        bookings: number
+        dateStr: string
+    }
+    const chartData: ChartData[] = []
+
     for (let i = 6; i >= 0; i--) {
         const d = new Date()
         d.setDate(d.getDate() - i)
         const dayName = days[d.getDay()]
-        // We use a simple day name key, but ideally we'd use full date to be precise. 
-        // For this demo chart, Day Name is fine properly ordered.
         chartData.push({ name: dayName, bookings: 0, dateStr: d.toISOString().split('T')[0] })
     }
 

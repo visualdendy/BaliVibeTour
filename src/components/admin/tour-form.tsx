@@ -86,32 +86,32 @@ export function TourForm({ initialData, isEditMode = false }: TourFormProps) {
                         <div className="grid gap-4 md:grid-cols-2">
                             <div className="space-y-2">
                                 <Label htmlFor="name">Tour Name</Label>
-                                <Input id="name" name="name" required defaultValue={initialData?.name} placeholder="e.g. Ubud Cultural Tour" />
+                                <Input id="name" name="name" required defaultValue={initialData?.name || ''} placeholder="e.g. Ubud Cultural Tour" />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="slug">Slug (URL)</Label>
-                                <Input id="slug" name="slug" required defaultValue={initialData?.slug} placeholder="e.g. ubud-cultural-tour" />
+                                <Input id="slug" name="slug" required defaultValue={initialData?.slug || ''} placeholder="e.g. ubud-cultural-tour" />
                             </div>
                         </div>
 
                         <div className="grid gap-4 md:grid-cols-3">
                             <div className="space-y-2">
                                 <Label htmlFor="price">Price ($)</Label>
-                                <Input id="price" name="price" type="number" step="0.01" required defaultValue={initialData?.price} placeholder="45.00" />
+                                <Input id="price" name="price" type="number" step="0.01" required defaultValue={initialData?.price || ''} placeholder="45.00" />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="duration">Duration</Label>
-                                <Input id="duration" name="duration" required defaultValue={initialData?.duration} placeholder="e.g. 10 Hours" />
+                                <Input id="duration" name="duration" required defaultValue={initialData?.duration || ''} placeholder="e.g. 10 Hours" />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="capacity">Capacity (Pax)</Label>
-                                <Input id="capacity" name="capacity" type="number" required defaultValue={initialData?.capacity} placeholder="4" />
+                                <Input id="capacity" name="capacity" type="number" required defaultValue={initialData?.capacity || ''} placeholder="4" />
                             </div>
                         </div>
 
                         <div className="space-y-2">
                             <Label htmlFor="description_en">Description</Label>
-                            <Textarea id="description_en" name="description_en" required defaultValue={initialData?.description_en} className="min-h-[100px]" placeholder="Detailed description of the tour..." />
+                            <Textarea id="description_en" name="description_en" required defaultValue={initialData?.description_en || ''} className="min-h-[100px]" placeholder="Detailed description of the tour..." />
                         </div>
 
                         <div className="space-y-2">
