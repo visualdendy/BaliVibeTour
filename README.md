@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BaliVibe Tours
 
-## Getting Started
+A full-stack Booking System & Admin Dashboard for a Bali Tour Agency. Built with Next.js 16, Supabase, and Telegram Bot.
 
-First, run the development server:
+## Features
+- **Public**: Browse tours, details page, multi-step booking form.
+- **Admin**: Dashboard stats, Manage Tours, Guides, Bookings (Kanban/Table).
+- **Bot**: Telegram integration to broadcast bookings to drivers and handle assignment via inline buttons.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tech Stack
+- **Framework**: Next.js 16 (App Router, Server Actions)
+- **Database**: Supabase (PostgreSQL, Auth, Storage)
+- **UI**: Tailwind CSS, Shadcn UI, Lucide Icons
+- **Bot**: node-telegram-bot-api
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Environment Variables**
+   Copy `.env.example` to `.env.local` and fill in your Supabase & Telegram keys.
+   ```bash
+   cp .env.example .env.local
+   ```
 
-## Learn More
+3. **Database Setup**
+   - Go to Supabase SQL Editor.
+   - Run the contents of `supabase/schema.sql`.
 
-To learn more about Next.js, take a look at the following resources:
+4. **Seed Data** (Optional)
+   Populate the database with sample tours and guides.
+   ```bash
+   npx tsx scripts/seed.ts
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. **Run Development Server**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+6. **Run Telegram Bot**
+   in a separate terminal:
+   ```bash
+   npx tsx bot/index.ts
+   ```
 
-## Deploy on Vercel
+## Folder Structure
+- `src/app`: App Router pages
+- `src/components`: Reusable UI components
+- `src/lib`: Utilities (Supabase client, helpers)
+- `bot`: Telegram bot script
+- `supabase`: SQL schema
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+Private Property of BaliVibe Tours.
