@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Download, CreditCard, DollarSign, TrendingUp, Users } from "lucide-react"
 import { formatPrice } from "@/lib/utils"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { ExportFinanceButton } from "@/components/admin/export-finance-button"
 
 export default async function AdminFinancePage() {
     const cookieStore = await cookies()
@@ -42,9 +43,7 @@ export default async function AdminFinancePage() {
         <div className="space-y-6">
             <div className="flex justify-between items-center">
                 <h1 className="text-3xl font-bold">Finance & Analytics</h1>
-                <Button variant="outline">
-                    <Download className="mr-2 h-4 w-4" /> Export Report
-                </Button>
+                <ExportFinanceButton bookings={bookings} />
             </div>
 
             {/* Metrics Cards */}

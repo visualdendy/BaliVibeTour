@@ -9,6 +9,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { formatDate } from "@/lib/utils"
+import { ExportCustomersButton } from "@/components/admin/export-customers-button"
 
 export default async function AdminCustomersPage() {
     const cookieStore = await cookies()
@@ -48,7 +49,10 @@ export default async function AdminCustomersPage() {
 
     return (
         <div className="space-y-6">
-            <h1 className="text-3xl font-bold">Customers</h1>
+            <div className="flex justify-between items-center">
+                <h1 className="text-3xl font-bold">Customers</h1>
+                <ExportCustomersButton customers={customers} />
+            </div>
 
             <div className="rounded-md border bg-white">
                 <Table>

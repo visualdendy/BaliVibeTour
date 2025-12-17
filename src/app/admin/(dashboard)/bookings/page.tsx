@@ -12,6 +12,7 @@ import {
 import Link from "next/link"
 import { Eye, CheckCircle, Clock, Plus } from "lucide-react"
 import { formatPrice, formatDate } from "@/lib/utils"
+import { ExportBookingsButton } from "@/components/admin/export-bookings-button"
 // import { Badge } from "@/components/ui/badge" // If I had a badge component
 
 export default async function AdminBookingsPage() {
@@ -38,7 +39,7 @@ export default async function AdminBookingsPage() {
                             <Plus className="mr-2 h-4 w-4" /> New Booking
                         </Link>
                     </Button>
-                    <Button variant="outline">Export CSV</Button>
+                    <ExportBookingsButton bookings={bookings || []} />
                 </div>
             </div>
 
