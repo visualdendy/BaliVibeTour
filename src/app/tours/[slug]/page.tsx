@@ -53,17 +53,6 @@ export default async function TourPage(props: { params: Promise<{ slug: string }
                         </div>
                     </section>
 
-                    <section>
-                        <h2 className="text-2xl font-bold mb-4">What's Included</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            {tour.inclusions?.map((inc, i) => (
-                                <div key={i} className="flex items-start gap-2">
-                                    <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                                    <span className="text-sm">{inc}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
 
                     {/* Itinerary could go here if parsed from JSONB */}
                 </div>
