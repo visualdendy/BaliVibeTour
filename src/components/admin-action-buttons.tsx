@@ -35,7 +35,17 @@ export function AdminActionButtons({ bookingId, status, hasGuide }: Props) {
         setLoading('reminder')
         try {
             const res = await sendReminderAction(bookingId)
-            if (res.success) toast.success(res.message)
+            if (res.success) {
+                toast.success(res.message)
+                // Open WhatsApp if URL is provided
+                if (res.whatsappUrl) {
+                    window.open(res.whatsappUrl, '_blank')
+                }
+            } else {
+                toast.error(res.message)
+            }
+        } catch (error) {
+            toast.error("Failed to send reminder")
         } finally {
             setLoading(null)
         }
