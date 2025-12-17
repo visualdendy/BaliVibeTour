@@ -67,7 +67,7 @@ export default async function Home() {
           </div>
           <div>
             <h3 className="font-bold text-lg mb-4">Contact</h3>
-            <p className="text-sm text-slate-400">Phone: +62 812 3456 7890</p>
+            <p className="text-sm text-slate-400">Phone: +62 8990345431</p>
             <p className="text-sm text-slate-400">Email: booking@balivibe.com</p>
           </div>
           <div>

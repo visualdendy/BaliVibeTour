@@ -10,7 +10,8 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import Link from "next/link"
-import { Plus, Edit, Trash, MessageSquare } from "lucide-react"
+import { Plus, MessageSquare } from "lucide-react"
+import { GuideActions } from "@/components/admin/guide-actions"
 
 export default async function AdminGuidesPage() {
     const cookieStore = await cookies()
@@ -76,15 +77,8 @@ export default async function AdminGuidesPage() {
                                             <span className="text-gray-600 font-medium text-xs bg-gray-100 px-2 py-1 rounded-full">Inactive</span>
                                         )}
                                     </TableCell>
-                                    <TableCell className="text-right space-x-2">
-                                        <Button variant="ghost" size="icon" asChild>
-                                            <Link href={`/admin/guides/${guide.id}`}>
-                                                <Edit className="h-4 w-4" />
-                                            </Link>
-                                        </Button>
-                                        <Button variant="ghost" size="icon" className="text-red-500 hover:text-red-600 hover:bg-red-50">
-                                            <Trash className="h-4 w-4" />
-                                        </Button>
+                                    <TableCell className="text-right">
+                                        <GuideActions guideId={guide.id} guideName={guide.name} />
                                     </TableCell>
                                 </TableRow>
                             ))
