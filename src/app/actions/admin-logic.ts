@@ -74,31 +74,31 @@ export async function sendReminderAction(bookingId: string) {
     const pickupLocation = booking.pickup_location
     const pax = booking.pax
 
-    const message = `🌴 *BaliVibe Tours - Booking Reminder* 🌴
+    const message = `*BaliVibe Tours - Booking Reminder*
 
-Hello ${booking.customer_name}! 👋
+Hello ${booking.customer_name}!
 
 This is a friendly reminder about your upcoming tour with us:
 
-📅 *Tour*: ${tourName}
-📆 *Date*: ${tourDate}
-👥 *Guests*: ${pax} ${pax > 1 ? 'people' : 'person'}
-📍 *Pickup Location*: ${pickupLocation}
-👨‍✈️ *Your Guide*: ${guideName}
+*Tour*: ${tourName}
+*Date*: ${tourDate}
+*Guests*: ${pax} ${pax > 1 ? 'people' : 'person'}
+*Pickup Location*: ${pickupLocation}
+*Your Guide*: ${guideName}
 
-We're excited to show you the best of Bali! 🏝️
+We're excited to show you the best of Bali!
 
 *Important Reminders:*
-✅ Please be ready 10 minutes before pickup time
-✅ Bring sunscreen, comfortable shoes, and your camera
-✅ Don't forget your booking confirmation
+- Please be ready 10 minutes before pickup time
+- Bring sunscreen, comfortable shoes, and your camera
+- Don't forget your booking confirmation
 
 If you have any questions or need to make changes, please contact us immediately.
 
 Looking forward to an amazing adventure with you!
 
 Best regards,
-*BaliVibe Tours Team* 🌺
+*BaliVibe Tours Team*
 
 _Experience the Real Bali with Us!_`
 
