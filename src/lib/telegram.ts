@@ -14,6 +14,7 @@ export async function sendTelegramNotification(booking: any) {
     const bot = new TelegramBot(token, { polling: false })
 
     const tourName = booking.tours?.name || "Private Tour"
+    const specialRequests = booking.special_requests || "None"
     const message = `
 🆕 **NEW BOOKING REQUEST**
 
@@ -24,6 +25,7 @@ export async function sendTelegramNotification(booking: any) {
 📍 Pickup: ${booking.pickup_location}
 👤 Name: ${booking.customer_name}
 💰 Price: $${booking.total_price}
+📝 Special Requests: ${specialRequests}
 
 Who wants to take this?
 `
