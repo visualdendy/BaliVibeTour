@@ -2,31 +2,27 @@ import { NextRequest, NextResponse } from 'next/server'
 import TelegramBot from 'node-telegram-bot-api'
 import { createClient } from '@supabase/supabase-js'
 
-// Initialize Bot
-const token = process.env.TELEGRAM_BOT_TOKEN!
-// Using 'polling: false' means we will feed updates manually via processUpdate
-const bot = new TelegramBot(token, { polling: false })
-
-// Initialize Supabase
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-const supabase = createClient(supabaseUrl, supabaseKey)
-
 // Handle POST request (Webhook)
 export async function POST(req: NextRequest) {
     try {
+        // Initialize inside handler to ensure env vars are available
+        const token = process.env.TELEGRAM_BOT_TOKEN
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+        const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+        if (!token || !supabaseUrl || !supabaseKey) {
+            console.error('Missing environment variables')
+            return NextResponse.json({ error: 'Configuration error' }, { status: 500 })
+        }
+
+        const bot = new TelegramBot(token, { polling: false })
+        const supabase = createClient(supabaseUrl, supabaseKey)
+
         const body = await req.json()
 
-        // Process the update
-        // We need to manually handle the callback query logic here since we aren't using bot.on('callback_query') persistent listener
-        // But bot.processUpdate(body) will trigger the events if we set up listeners.
-        // However, setting up listeners on every request is inefficient and might fire multiple times if not careful.
-        // Better: Check the body type directly.
-
         if (body.callback_query) {
-            await handleCallbackQuery(body.callback_query)
+            await handleCallbackQuery(body.callback_query, bot, supabase)
         } else if (body.message) {
-            // Handle regular messages if needed, logging for now
             console.log("Received message:", body.message.text)
         }
 
@@ -37,7 +33,11 @@ export async function POST(req: NextRequest) {
     }
 }
 
-async function handleCallbackQuery(query: TelegramBot.CallbackQuery) {
+async function handleCallbackQuery(
+    query: TelegramBot.CallbackQuery,
+    bot: TelegramBot,
+    supabase: any
+) {
     const { id, data, from, message } = query
     if (!data || !message) return
 
